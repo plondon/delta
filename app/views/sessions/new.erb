@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Log In</h1>
+  <% if @error %>
+    <div class="errors"><%= @error %></div>
+  <% end %>
+  <form id="login_form" action="/sessions" method="post">
+    <input type="text" name="username" placeholder="username" required>
+    <input type="password" name="password" placeholder="password" required>
+    <br>
+    <input type="submit" value="Login">
+  </form>
+</div>
