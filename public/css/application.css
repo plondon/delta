@@ -73,3 +73,7 @@ form.quirks {
   margin-right: 20px;
   width: 200px;
 }
+
+.end_language h3 {
+  text-decoration: underline;
+}
