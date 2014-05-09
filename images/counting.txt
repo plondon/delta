@@ -1,0 +1,9 @@
+counting:
+original: http://i.imgur.com/3N6LwGv.png
+
+
+final: http://i.imgur.com/NIHtvTZ.png
+
+
+delta: http://i.imgur.com/u837ubZ.gif
+
