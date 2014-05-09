@@ -5,7 +5,7 @@ class CreateQuestionsTable < ActiveRecord::Migration
       t.string :query
       t.string :start_language
       t.string :end_language
-      t.
+      t.timestamps
     end
   end
 end
