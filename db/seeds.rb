@@ -28,4 +28,3 @@ questions_text.each do |question|
 end
 
 Answer.create(:user => sherif, question: Question.find_by_query("How do I make an if-else loop in Javascript?"), original_solution: "http://i.imgur.com/wVw9DFj.png", final_solution: "http://i.imgur.com/B6JL4NA.png", delta: "http://i.imgur.com/2qmKaks.gif", votes: 10)
-Answer.create(:user => sherif, question: Question.find_by_query("How do I make a Class object in Javascript?"), original_solution: "http://i.imgur.com/6wHXqQo.png", final_solution: "http://i.imgur.com/nW6hdKj.png", delta: "http://i.imgur.com/WkkMGwP.gif", votes: 10)
