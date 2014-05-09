@@ -23,19 +23,49 @@ else {
 };
 ______________________________________________
 
-# Class
+# Class (phil)
 
 Ruby:
 
 
+
+
+class Person
+	attr_accessor :name, :age
+
+	def initialize(name, age)
+		@name = name
+		@age = age
+	end
+
+	def say_hi
+		"Hello there!"
+	end
+end
+
+
+
+
+
+phil = Person.new("Phil London", 22)
+
 JavaScript:
 
+var createPerson = function(name, age) {
+	return {
+		name: name,
+		age: age,
+		sayHi: function() {
+			return "Hello there!";
+		}
+	}
+}
 
-
+phil = createPerson("Phil", 22)
 
 ______________________________________________
 
-# Method 
+# Method
 
 Ruby:
 
@@ -49,7 +79,29 @@ ______________________________________________
 
 # Each loop
 
+students = ["phil", "shaun", "buck", "will hunting"]
+
 Ruby:
+
+students.each do |student|
+	puts student
+end
+
+Javascript:
+
+students.forEach(function(student) {
+	console.log(student);
+});
+
+
+______________________________________________
+
+# Map
+
+
+Ruby:
+
+
 
 
 Javascript:
@@ -58,21 +110,3 @@ Javascript:
 
 
 ______________________________________________
-
-# Equalities
-
-
-Ruby:
-
-
-Javascript:
-
-
-
-
-______________________________________________
-
-
-
-
-
