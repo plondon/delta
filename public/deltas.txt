@@ -1,0 +1,78 @@
+#### RUBY TO JAVA SCRIPT ####
+
+__________________________________________
+# IF Else
+
+Ruby :
+
+today = friday
+
+if today == "Friday"
+	"Today is Friday!"
+else
+	"I wish today was Friday!"
+end
+
+JavaScript:
+
+if (today === "Friday") {
+	console.log("Today is Friday!")
+}
+else {
+	console.log("I wish today was Friday!")
+};
+______________________________________________
+
+# Class
+
+Ruby:
+
+
+JavaScript:
+
+
+
+
+______________________________________________
+
+# Method 
+
+Ruby:
+
+
+Javascript:
+
+
+
+
+______________________________________________
+
+# Each loop
+
+Ruby:
+
+
+Javascript:
+
+
+
+
+______________________________________________
+
+# Equalities
+
+
+Ruby:
+
+
+Javascript:
+
+
+
+
+______________________________________________
+
+
+
+
+
