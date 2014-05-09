@@ -1,14 +1,15 @@
 <div class="container">
   <h1>New Question</h1>
 
-  <form id="sign-up" method="post" action="/users">
+  <form method="post" action="/questions">
     <label class="question label" for="query">Query</label>
     <input id="query-input" type="text" name="question[query]" placeholder="e.g., How do you write an if else statement in JavaScript?">
     <span id="name-errors" class="errors"></span>
     <br>
 
     <label class="question label" for="start_language">Start Language</label>
-    <select name="question[start_language]">
+    <select id="start_language" name="question[start_language]">
+      <option selected="selected">-----</option>
       <option value="ruby">Ruby</option>
       <option value="javascript">JavaScript</option>
       <option value="python">Python</option>
@@ -17,7 +18,8 @@
     <br>
 
     <label class="question label" for="end_language">End Language</label>
-    <select name="question[end_language]">
+    <select id="end_language" name="question[end_language]">
+      <option selected="selected">-----</option>
       <option value="ruby">Ruby</option>
       <option value="javascript">JavaScript</option>
       <option value="python">Python</option>
@@ -29,3 +31,20 @@
   </form>
 
 </div>
+
+<script type="text/javascript">
+
+      $('form').on("submit", function(e) {
+      var start_language = $('#start_language').find(":selected").text()
+      var end_language   = $('#end_language').find(":selected").text()
+
+      if (start_language === end_language) {
+        e.preventDefault();
+        alert("Start Language and End Language Must Be Different")
+      }
+      else {
+        return true;
+      }
+  });
+
+</script>
