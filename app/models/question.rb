@@ -3,11 +3,12 @@ class Question < ActiveRecord::Base
 
   validates :start_language, :end_language, presence: true
 
-  def self.get_end_languages(questions)
-    end_languages = []
-    questions.each do |question|
-      end_languages << question.end_language
-    end
-    return end_languages.uniq
+  def self.get_questions(start_language)
+    @ruby_questions       = ['Ruby', Question.where(:end_language => 'ruby', :start_language => start_language)]
+    @javascript_questions = ['JavaScript', Question.where(:end_language => 'javascript', :start_language => start_language)]
+    @python_questions     = ['Python', Question.where(:end_language => 'python', :start_language => start_language)]
+    @java_questions       = ['Java', Question.where(:end_language => 'java', :start_language => start_language)]
+
+    @questions = [@ruby_questions, @javascript_questions, @python_questions, @java_questions]
   end
 end

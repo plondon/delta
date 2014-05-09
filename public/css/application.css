@@ -77,3 +77,13 @@ form.quirks {
 .end_language h3 {
   text-decoration: underline;
 }
+
+/*questions*/
+
+#query-input {
+  width: 54%;
+}
+
+.question {
+  text-align: left;
+}

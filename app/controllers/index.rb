@@ -1,6 +1,5 @@
 get '/' do
   # render home page
-  @users = User.all
   erb :index
 end
 
@@ -61,12 +60,7 @@ end
 get '/questions/:language' do
   @start_language = params[:language].downcase
 
-  @ruby_questions       = ['Ruby', Question.where(:end_language => 'ruby', :start_language => @start_language)]
-  @javascript_questions = ['JavaScript', Question.where(:end_language => 'javascript', :start_language => @start_language)]
-  @python_questions     = ['Python', Question.where(:end_language => 'python', :start_language => @start_language)]
-  @java_questions       = ['Java', Question.where(:end_language => 'java', :start_language => @start_language)]
-
-  @questions = [@ruby_questions, @javascript_questions, @python_questions, @java_questions]
+  @questions = Question.get_questions(@start_language)
   erb :"questions/show"
 end
 
@@ -75,6 +69,8 @@ get '/question/new' do
 end
 
 post '/questions' do
+
+  @question = Question.new()
   redirect to '/questions/show'
 end
 
@@ -84,3 +80,9 @@ get '/questions/:id' do
 end
 
 #------- ANSWERS -----------
+
+get '/questions/:id/answers' do
+  @question = Question.find(params[:id])
+  @answers = @question.answers
+  erb :"answers/show"
+end
