@@ -20,13 +20,14 @@ nav .brand, nav .brand a {
   font-size: 18pt;
   text-decoration: none;
   color: #444;
-  width: 60%;
+  padding-top: 8px;
   display: inline-block;
 }
 
 nav ul {
   display: inline-block;
   width: 30%;
+  float: right;
   text-align: right;
 }
 
@@ -100,4 +101,8 @@ form.quirks {
 .answer-box {
   padding-bottom: 20px;
   border-bottom: 2px solid black;
+}
+
+#delta-sym {
+  width: 20px;
 }
