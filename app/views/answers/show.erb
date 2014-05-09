@@ -1,5 +1,8 @@
 <div class="container">
-  <h1><%= @question.query %></h1><a href="/questions/<%= @question.id %>/answers/new" style="text-align:right">Add Answer</a>
+  <h1><%= @question.query %></h1>
+  <% if session[:user_id] %>
+  <a href="/questions/<%= @question.id %>/answers/new" style="text-align:right">Add Answer</a>
+  <% end %>
     <% @answers.each_with_index do |answer,index| %>
       <div class="answer-box">
         <div class="submission">

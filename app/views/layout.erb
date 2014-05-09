@@ -13,10 +13,12 @@
 
   <nav>
 
-    <div class="brand"><a href="/">Delta</a></div>
+    <div class="brand"><a href="/">Delta</a>
+    <img id="delta-sym" src="http://4.bp.blogspot.com/_xdN0QQwsP1A/S76S2H0fmoI/AAAAAAAAGuo/L8w9tam6Rbk/s400/Delta.png" alt="delta_symbol" /></div>
 
     <ul>
       <% if current_user %>
+        <li>Welcome, <%= current_user.name %>! </li>
         <li><a href="/question/new">Ask a Question</a></li>
         <li><a id="sign-out" href="/sessions/<%= current_user.id %>">Sign Out</a></li>
       <% else %>
@@ -28,6 +30,6 @@
   </nav>
 
   <%= yield %>
-  <pre><%= session.inspect %></pre>
+ <!--  <pre><%= session.inspect %></pre> -->
 </body>
 </html>
