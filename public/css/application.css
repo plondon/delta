@@ -1,6 +1,5 @@
 .container {
   margin: 20px auto;
-  width: 800px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
 }
@@ -86,4 +85,19 @@ form.quirks {
 
 .question {
   text-align: left;
+}
+
+/*answers*/
+
+.answer {
+  display: inline-block
+}
+
+.answer-image {
+  width: 463px
+}
+
+.answer-box {
+  padding-bottom: 20px;
+  border-bottom: 2px solid black;
 }

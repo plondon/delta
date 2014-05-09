@@ -1,0 +1,31 @@
+<div class="container">
+  <h1><%= @question.query %></h1>
+    <% @answers.each_with_index do |answer,index| %>
+      <div class="answer-box">
+        <div class="submission">
+          <h2>Solution <%=index+1%></h2>
+          Submitted by <%= answer.user.email %><br>
+          on <%= answer.created_at %>
+        </div>
+        <br>
+        <div class="answer" id="original_solution">
+          <div class="status">
+            Original Solution (<%= @question.start_language %>)
+          </div>
+          <img class="answer-image" src="<%= answer.original_solution %>" alt="original solution" />
+        </div>
+        <div class="answer" id="delta">
+          <div class="status">
+            Delta
+          </div>
+          <img class="answer-image" src="<%= answer.delta %>" alt="delta" />
+        </div>
+        <div class="answer" id="final_solution">
+          <div class="status">
+            Final Solution (<%= @question.end_language %>)
+          </div>
+          <img class="answer-image" src="<%= answer.final_solution %>" alt="final solution" />
+        </div>
+      </div>
+    <% end %>
+</div>

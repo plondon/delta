@@ -6,7 +6,7 @@
         <h3><%= question[0] %></h3>
         <ol>
           <% question[1].each do |question| %>
-            <li><%= question.query %></li>
+            <li><a href="/questions/<%=question.id%>/answers"><%= question.query %></a></li>
           <% end %>
         </ol>
       </div>

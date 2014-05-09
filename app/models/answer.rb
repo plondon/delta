@@ -1,3 +1,4 @@
 class Answer < ActiveRecord::Base
-  validates :original_solution, :final_solution, :delta, presence: true
+  belongs_to :user
+  validates :original_solution, :final_solution, presence: true
 end
