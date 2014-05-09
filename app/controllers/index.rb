@@ -82,3 +82,7 @@ get '/questions/:id/answers' do
   @answers = @question.answers
   erb :"answers/show"
 end
+
+get '/answers/new' do
+  
+end

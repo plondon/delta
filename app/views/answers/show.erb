@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><%= @question.query %></h1>
+  <h1><%= @question.query %></h1><a href="/answers/new" style="text-align:right">Add Answer</a>
     <% @answers.each_with_index do |answer,index| %>
       <div class="answer-box">
         <div class="submission">
