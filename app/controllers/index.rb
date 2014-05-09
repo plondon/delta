@@ -60,12 +60,27 @@ end
 
 get '/questions/:language' do
   @start_language = params[:language].downcase
-  
-  @ruby_questions = ['Ruby', Question.where(:end_language => 'ruby', :start_language => @start_language)]
+
+  @ruby_questions       = ['Ruby', Question.where(:end_language => 'ruby', :start_language => @start_language)]
   @javascript_questions = ['JavaScript', Question.where(:end_language => 'javascript', :start_language => @start_language)]
-  @python_questions = ['Python', Question.where(:end_language => 'python', :start_language => @start_language)]
-  @java_questions = ['Java', Question.where(:end_language => 'java', :start_language => @start_language)]
+  @python_questions     = ['Python', Question.where(:end_language => 'python', :start_language => @start_language)]
+  @java_questions       = ['Java', Question.where(:end_language => 'java', :start_language => @start_language)]
 
   @questions = [@ruby_questions, @javascript_questions, @python_questions, @java_questions]
   erb :"questions/show"
 end
+
+get '/question/new' do
+  erb :"questions/new"
+end
+
+post '/questions' do
+  redirect to '/questions/show'
+end
+
+get '/questions/:id' do
+  @question = Question.find(params[:id])
+  @answers = @question.answers
+end
+
+#------- ANSWERS -----------
