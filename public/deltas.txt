@@ -39,11 +39,24 @@ ______________________________________________
 
 Ruby:
 
+Note for text: Methods are split into to two when using javascript. Methods can become functions, but when dealing with a Class or Object they are called protoype functions. Prototype functions are called like "number.multiply_by_two". 
+
+
+def multiply( number1, number2)
+	number1 * number2
+end
+
+multiply(10,20)
+
 
 Javascript:
 
 
+var multiply = function(number1, number2){
+	return number1*number2;	
+};
 
+multiply(10,20)
 
 ______________________________________________
 
@@ -72,6 +85,36 @@ Javascript:
 
 ______________________________________________
 
+
+# Map Loop (with functions)
+
+Ruby:
+
+numbers = [2,5,14,62,77,183]
+
+def mutliply_by_two(number)
+	number*2
+end
+
+numbers.map do |number|
+	multiply_by_two(number)
+end
+
+numbers == [4,10,28,132,154,366]
+
+- - - - - - - - - - - - - - - - - 
+Javascript:
+
+var multiply_by_two = function(number){
+	return number*2;
+};
+
+numbers.map(multiply_by_two)
+
+
+
+
+______________________________________________
 
 
 
