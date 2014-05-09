@@ -69,14 +69,10 @@ get '/question/new' do
 end
 
 post '/questions' do
+  @start_language = params[:question][:start_language]
 
-  @question = Question.new()
-  redirect to '/questions/show'
-end
-
-get '/questions/:id' do
-  @question = Question.find(params[:id])
-  @answers = @question.answers
+  Question.create(params[:question])
+  redirect to "/questions/#{@start_language}"
 end
 
 #------- ANSWERS -----------
