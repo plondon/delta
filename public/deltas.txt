@@ -23,21 +23,43 @@ else {
 };
 ______________________________________________
 
-# Class
+# Class (phil)
 
 Ruby:
 
+
+
+
+class Person
+	attr_accessor :name, :age
+
+	def initialize(name, age)
+		@name = name
+		@age = age
+	end
+
+	def say_hi
+		"Hello there!"
+	end
+end
 
 JavaScript:
 
+var createPerson = function(name, age) {
+	return {
+		name: name,
+		age: age,
+		sayHi: function() {
+			return "Hello there!";
+		}
+	}
+}
 
-
+phil = createPerson("Phil", 22)
 
 ______________________________________________
 
-# Method 
-
-Ruby:
+# Method
 
 Note for text: Methods are split into to two when using javascript. Methods can become functions, but when dealing with a Class or Object they are called protoype functions. Prototype functions are called like "number.multiply_by_two". 
 
@@ -48,42 +70,38 @@ end
 
 multiply(10,20)
 
-
-Javascript:
-
-
 var multiply = function(number1, number2){
 	return number1*number2;	
 };
 
 multiply(10,20)
 
+
 ______________________________________________
 
 # Each loop
 
+students = ["phil", "shaun", "buck", "will hunting"]
+
 Ruby:
 
+students.each do |student|
+	puts student
+end
 
 Javascript:
 
-
+students.forEach(function(student) {
+	console.log(student);
+});
 
 
 ______________________________________________
 
-# Equalities
+# Map
 
 
 Ruby:
-
-
-Javascript:
-
-
-
-
-______________________________________________
 
 
 # Map Loop (with functions)
@@ -113,9 +131,4 @@ numbers.map(multiply_by_two)
 
 
 
-
 ______________________________________________
-
-
-
-
