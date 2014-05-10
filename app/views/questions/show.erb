@@ -7,14 +7,17 @@
       </div>
         <% question[1].each do |question| %>
           <div class="question-box">
-            <a href="/questions/<%=question.id%>/answers"><%= question.query %></a>
-            <span style="text-align: right">Answers: <%= question.answers.length %></span>
+            <a class="question-big" href="/questions/<%=question.id%>/answers"><%= question.query %></a>
+            <span class="answer-num">Answers: <%= question.answers.length %></span>
             <div class="top-answer">
               <% if question.top_answer %>
+                <p class="top-user">
+                  Top answer submitted by <%= question.top_answer.user.name %>
+                  <span><%= question.top_answer.created_at %></span>
+                </p>
                 <img src="<%= question.top_answer.delta %>" alt="delta gif" />
               <% else %>
-                This question needs an answer. Find out how to submit an answer
-                <a href="/contribute">here</a>.
+                This question needs an <a href="/questions/<%= question.id %>/answers/new">answer</a>.
               <% end %>
             </div>
           </div>
