@@ -6,9 +6,14 @@
     <% @answers.each_with_index do |answer,index| %>
       <div class="answer-box">
         <div class="submission">
-          <h2>Solution <%=index+1%></h2>
+          <h2 style="display:inline-block;">Solution <%=index+1%></h2>
+          <span class="votes header">
+              <img src="/images/up_vote.png" alt="vote up" />
+              <img src="/images/down_vote.png" alt="vote down" />
+          </span><br>
           Submitted by <%= answer.user.name %> (<%= answer.user.email %>)<br>
-          on <%= answer.created_at %>
+          on <%= answer.created_at %><br>
+          <span class="vote-amount"><%= answer.votes %> votes</span>
         </div>
         <br>
         <div class="answer" id="original_solution">

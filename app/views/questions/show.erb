@@ -13,7 +13,8 @@
               <% if question.top_answer %>
                 <p class="top-user">
                   Top answer submitted by <%= question.top_answer.user.name %>
-                  <span><%= question.top_answer.created_at %></span>
+                  <br>
+                  Votes: <%= question.top_answer.votes %>
                 </p>
                 <img src="<%= question.top_answer.delta %>" alt="delta gif" />
               <% else %>
