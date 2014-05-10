@@ -11,16 +11,16 @@ languages = %w(ruby javascript python java)
 # end
 
 questions_text = ["How do I make an each loop in Javascript?",
-"How do I make select loop in Javascript?",
-"How do I make map loop in Javascript?",
-"How do I make each_with_index loop in Javascript?",
-"How do I make each_key loop in Javascript?",
+"How do I make a select loop in Javascript?",
+"How do I make a map loop in Javascript?",
+"How do I make an each_with_index loop in Javascript?",
+"How do I make an each_key loop in Javascript?",
 "How do I make a Class object in Javascript?",
-"How do I make method in Javascript?",
-"How do I make variables in Javascript?",
+"How do I make a method in Javascript?",
+"How do I make a variables in Javascript?",
 "How do I make an if-else loop in Javascript?",
 "How do I print text to the console in Javascript?",
-"How do I make equalities in Javascript?",
+"How do I determine equalities in Javascript?",
 "How do I count to ten?"]
 
 

@@ -88,6 +88,27 @@ form.quirks {
   text-align: left;
 }
 
+/* all the questions */
+
+.question-box {
+  padding: 0.5em 0 1em 0;
+  border-bottom: 1px solid black;
+}
+
+.question-big {
+  font-size: 2em;
+}
+
+.top-answer img {
+  width: 200px;
+}
+
+.answer-num {
+  position: absolute;
+  right: 1em;
+  font-size: 2em;
+}
+
 /*answers*/
 
 .answer {
