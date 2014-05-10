@@ -4,13 +4,21 @@
     <% if !question[1].empty? %>
       <div class="end_language">
         <h3><%= question[0] %></h3>
-        <ol>
-          <% question[1].each do |question| %>
-            <li><a href="/questions/<%=question.id%>/answers"><%= question.query %></a>
-              <span>Answers: <%= question.answers.length %></span></li>
-          <% end %>
-        </ol>
       </div>
+        <% question[1].each do |question| %>
+          <div class="question-box">
+            <a href="/questions/<%=question.id%>/answers"><%= question.query %></a>
+            <span style="text-align: right">Answers: <%= question.answers.length %></span>
+            <div class="top-answer">
+              <% if question.top_answer %>
+                <img src="<%= question.top_answer.delta %>" alt="delta gif" />
+              <% else %>
+                This question needs an answer. Find out how to submit an answer
+                <a href="/contribute">here</a>.
+              <% end %>
+            </div>
+          </div>
+        <% end %>
     <% else %>
       <%= nil %>
     <% end %>
