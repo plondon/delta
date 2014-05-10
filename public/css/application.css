@@ -74,6 +74,15 @@ form.quirks {
   width: 200px;
 }
 
+#welcome-tabs {
+  display: inline-block;
+  width: 40%;
+  margin-right: 25px;
+  margin-top: 20px;
+  float: right;
+  text-align: right;
+}
+
 .end_language h3 {
   text-decoration: underline;
 }
