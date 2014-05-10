@@ -3,6 +3,10 @@ class Question < ActiveRecord::Base
 
   validates :start_language, :end_language, presence: true
 
+  def top_answer
+    return self.answers.sort_by {:votes}.first
+  end
+
   def self.get_questions(start_language)
     @ruby_questions       = ['Ruby', Question.where(:end_language => 'ruby', :start_language => start_language)]
     @javascript_questions = ['JavaScript', Question.where(:end_language => 'javascript', :start_language => start_language)]
