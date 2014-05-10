@@ -127,3 +127,9 @@ form.quirks {
 #delta-sym {
   width: 20px;
 }
+
+.votes img {
+  width: 30px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+}

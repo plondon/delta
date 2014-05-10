@@ -1,0 +1,22 @@
+to do
+- use votes to sort answers
+  - validate correct number of votes per user
+- adding the ability to add comments
+- make gif creating easier
+- write css (work on format)
+
+# Each loop
+
+students = ["phil", "shaun", "buck", "will hunting"]
+
+Ruby:
+
+students.each do |student|
+  puts student
+end
+
+Javascript:
+
+students.forEach(function(student) {
+  console.log(student);
+});
