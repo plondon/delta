@@ -8,8 +8,8 @@
         <div class="submission">
           <h2 style="display:inline-block;">Solution <%=index+1%></h2>
           <span class="votes header">
-              <img src="/images/up_vote.png" alt="vote up" />
-              <img src="/images/down_vote.png" alt="vote down" />
+              <img id="up"   src="/images/up_vote.png" alt="vote up" />
+              <img id="down" src="/images/down_vote.png" alt="vote down" />
           </span><br>
           Submitted by <%= answer.user.name %> (<%= answer.user.email %>)<br>
           on <%= answer.created_at %><br>
@@ -37,3 +37,12 @@
       </div>
     <% end %>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  $('#up').on('click', function() {
+    var posting = $.post('/votes', $(this).serialize());
+  });
+  $('#down').on('click', function() {
+    console.log('down')
+  });
+</script>
