@@ -91,13 +91,7 @@ end
 post '/questions/:id/answers' do
   @user = User.find(session[:user_id])
   @question = Question.find(params[:id])
-  p @user
-  p @question
 
   @answer = Answer.create(:user_id => @user.id, :question_id => @question.id, :original_solution => params[:original_solution], :delta => params[:delta], :final_solution => params[:final_solution])
-  p @answer
-  # # @question = Question.find(params[:id])
-  # # @user = User.find(session[:user_id])
-  # # @question.answers << Answer.new(params[:answer], :user => @user)
   redirect to "/questions/#{@question.id}/answers"
 end
