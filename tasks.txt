@@ -1,7 +1,8 @@
 to do
-- use votes to sort answers
-  - validate correct number of votes per user
-- adding the ability to add comments
+- validate correct number of votes per user
+- back to langugage
+- adding comments for answer posts
+- progress bar for gifs to see where it is in play
 - make gif creating easier
 - write css (work on format)
 
@@ -20,3 +21,22 @@ Javascript:
 students.forEach(function(student) {
   console.log(student);
 });
+
+# Each key loop
+
+################################################################################
+
+Ruby :
+
+phil = {name: "phil", age: 22, sex: 'Male'}
+phil.each_key do |key|
+  p key
+end
+
+JavaScript
+
+phil = {name: "phil", age: 22, sex: 'Male'}
+
+for (var key in phil) {
+  console.log(key);
+}

@@ -3,6 +3,8 @@
   <% if session[:user_id] %>
   <a href="/questions/<%= @question.id %>/answers/new" style="text-align:right">Add Answer</a>
   <% end %>
+  <br>
+  <a href="/questions/<%=@question.start_language %>">Back to Questions</a>
     <% @answers.each_with_index do |answer,index| %>
       <div class="answer-box">
         <div class="submission">
