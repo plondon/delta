@@ -5,7 +5,7 @@
       <div class="end_language">
         <h3><%= question[0] %></h3>
       </div>
-        <% question[1].each do |question| %>
+        <% question[1].reverse.each do |question| %>
           <div class="question-box">
             <a class="question-big" href="/questions/<%=question.id%>/answers"><%= question.query %></a>
             <span class="answer-num">Answers: <%= question.answers.length %></span>
