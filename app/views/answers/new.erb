@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Answer for <%= @question.query %></h1>
 
-  <form method="post" action="/questions/<%= @question.id %>/answers">
+  <form id="new_answer" method="post" action="/questions/<%= @question.id %>/answers">
     <label class="question label" for="original_solution">Original Solution</label>
     <input id="original_solution" type="text" name="original_solution" placeholder="image link">
     <span id="name-errors" class="errors"></span>

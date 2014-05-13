@@ -7,4 +7,10 @@ $(document).ready(function () {
     request.done(function () { window.location = "/"; });
   });
 
+  // bring up img or gif on link load
+  $('#new_answer input').on("focusout", function(){
+    link = $(this).val();
+
+    $('html').append("<img src=" + link + ">")
+  });
 });
