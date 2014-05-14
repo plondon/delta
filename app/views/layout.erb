@@ -2,17 +2,37 @@
 <html lang="en">
 <head>
   <link rel="stylesheet" href="/css/normalize.css?app=skills">
-  <link rel="stylesheet" href="/css/application.css?app=skills">
+  <link rel="stylesheet" href="/css/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>The Delta</title>
 </head>
 <body>
 
-  <nav>
+  <header class="navigation">
+    <div class="menu-wrapper">
+      <a href="/" class="logo">DELTA</a>
+      <p class="navigation-menu-button" id="js-mobile-menu">
+        MENU
+      </p>
+      <div class="nav">
+        <ul id="navigation-menu">
+        <% if current_user %>
+          <li class="nav-link"><a href="/question/new">Ask a Question</a></li>
+          <li class="nav-link"><a id="sign-out" href="/sessions/<%= current_user.id %>">Sign Out</a></li>
+        <% else %>
+          <li class="nav-link"><a href="/sessions/new">Sign In</a></li>
+          <li class="nav-link"><a href="/users/new">Sign Up</a></li>
+        <% end %>
+        </ul>
+      </div>
+      <div class="navigation">
 
+      </div>
+    </div>
+<!--
     <div class="brand"><a href="/">Delta</a>
     <img id="delta-sym" src="http://4.bp.blogspot.com/_xdN0QQwsP1A/S76S2H0fmoI/AAAAAAAAGuo/L8w9tam6Rbk/s400/Delta.png" alt="delta_symbol" /></div>
 
@@ -25,11 +45,38 @@
         <li><a href="/sessions/new">Sign In</a></li>
         <li><a href="/users/new">Sign Up</a></li>
       <% end %>
-    </ul>
+    </ul> -->
 
-  </nav>
+  </header>
 
   <%= yield %>
  <!--  <pre><%= session.inspect %></pre> -->
 </body>
+
+<script>
+  $(function() {
+    var menu = $('#navigation-menu');
+    var menuToggle = $('#js-mobile-menu');
+    var signUp = $('.sign-up');
+
+    $(menuToggle).on('click', function(e) {
+      e.preventDefault();
+      menu.slideToggle(function(){
+        if(menu.is(':hidden')) {
+          menu.removeAttr('style');
+        }
+      });
+    });
+
+
+ // underline under the active nav item
+    $(".nav .nav-link").click(function() {
+      $(".nav .nav-link").each(function() {
+        $(this).removeClass("active-nav-item");
+      });
+      $(this).addClass("active-nav-item");
+      $(".nav .more").removeClass("active-nav-item");
+    });
+  });
+</script>
 </html>

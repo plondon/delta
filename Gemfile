@@ -20,6 +20,15 @@ gem 'shotgun'
 
 gem 'rspec'
 
+# sassy stylin'
+gem 'sass'
+
+gem 'bourbon'
+
+gem 'neat'
+
+gem 'refills'
+
 group :development, :test do
   gem 'faker'
 end
