@@ -32,25 +32,22 @@
 
       </div>
     </div>
-<!--
-    <div class="brand"><a href="/">Delta</a>
-    <img id="delta-sym" src="http://4.bp.blogspot.com/_xdN0QQwsP1A/S76S2H0fmoI/AAAAAAAAGuo/L8w9tam6Rbk/s400/Delta.png" alt="delta_symbol" /></div>
-
-    <ul id="welcome-tabs">
-      <% if current_user %>
-        <li>Welcome, <%= current_user.name %>! </li>
-        <li><a href="/question/new">Ask a Question</a></li>
-        <li><a id="sign-out" href="/sessions/<%= current_user.id %>">Sign Out</a></li>
-      <% else %>
-        <li><a href="/sessions/new">Sign In</a></li>
-        <li><a href="/users/new">Sign Up</a></li>
-      <% end %>
-    </ul> -->
-
   </header>
 
   <%= yield %>
- <!--  <pre><%= session.inspect %></pre> -->
+ <a title="Real Time Analytics" href="http://clicky.com/100738213"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+<script type="text/javascript">
+var clicky_site_ids = clicky_site_ids || [];
+clicky_site_ids.push(100738213);
+(function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//static.getclicky.com/js';
+  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+})();
+</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100738213ns.gif" /></p></noscript>
 </body>
 
 <script>
