@@ -113,7 +113,7 @@ post '/add_votes' do
 
     return {votes: (@answer.votes.size)}.to_json
   else
-    return "Must be logged in to vote"
+    return {error: "Must be logged in to vote"}.to_json
   end
 end
 
