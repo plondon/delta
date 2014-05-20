@@ -6,45 +6,82 @@
   <br>
   <a href="/questions/<%=@question.start_language %>">Back to Questions</a>
     <% @answers.each_with_index do |answer,index| %>
+
       <div class="answer-box">
         <div class="submission">
           <h2 style="display:inline-block;">Solution <%=index+1%></h2>
           <span class="votes header">
-              <img id="up"   src="/images/up_vote.png" alt="vote up" />
-              <img id="down" src="/images/down_vote.png" alt="vote down" />
+            <% if !answer.users.include?(current_user) %>
+                <img class="up" id="<%=answer.id%>up"   src="/images/up_vote.png" alt="vote up" />
+                <img class="down" id="<%=answer.id%>down" src="/images/down_vote.png" alt="vote down" style="display: none"/>
+            <% else %>
+                <img class="up" id="<%=answer.id%>up"   src="/images/up_vote.png" alt="vote up" style="display: none"/>
+                <img class="down" id="<%=answer.id%>down" src="/images/down_vote.png" alt="vote down"/>
+            <% end %>
           </span><br>
           Submitted by <%= answer.user.name %> (<%= answer.user.email %>)<br>
           on <%= answer.created_at %><br>
-          <span class="vote-amount"><%= answer.votes %> votes</span>
+          <span class="vote-amount" id="answer<%=answer.id%>"><%= answer.votes.size %></span> votes
         </div>
         <br>
+
         <div class="answer" id="original_solution">
           <div class="status">
             Original Solution (<%= @question.start_language %>)
           </div>
           <img class="answer-image" src="<%= answer.original_solution %>" alt="original solution" />
         </div>
+
         <div class="answer" id="delta">
           <div class="status">
             Delta
           </div>
           <img class="answer-image" src="<%= answer.delta %>" alt="delta" />
         </div>
+
         <div class="answer" id="final_solution">
           <div class="status">
             Final Solution (<%= @question.end_language %>)
           </div>
           <img class="answer-image" src="<%= answer.final_solution %>" alt="final solution" />
         </div>
+
       </div>
     <% end %>
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  $('#up').on('click', function() {
-    var posting = $.post('/votes', $(this).serialize());
+  $('.up').on('click', function(e) {
+    e.preventDefault();
+    var answer_id = parseInt($(this)[0].id)
+    var votes = parseInt($('#answer' + answer_id).text())
+    var vote_amount = $('#answer' + answer_id)
+
+    var posting = $.post('/add_votes', { vote_num: votes, answer: answer_id })
+
+    posting.done(function(data) {
+      data = JSON.parse(data)
+      vote_amount.empty().append(data["votes"])
+    });
+
+    $(this).hide();
+    $('.down').show();
   });
-  $('#down').on('click', function() {
-    console.log('down')
+
+  $('.down').on('click', function(e) {
+    e.preventDefault();
+    var answer_id = parseInt($(this)[0].id)
+    var votes = parseInt($('#answer' + answer_id).text())
+    var vote_amount = $('#answer' + answer_id)
+
+    var posting = $.post('/down_vote', { vote_num: votes, answer: answer_id })
+
+    posting.done(function(data) {
+      data = JSON.parse(data)
+      vote_amount.empty().append(data["votes"])
+    });
+
+    $(this).hide();
+    $('.up').show();
   });
 </script>

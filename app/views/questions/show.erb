@@ -14,7 +14,7 @@
                 <p class="top-user">
                   Top answer submitted by <%= question.top_answer.user.name %>
                   <br>
-                  Votes: <%= question.top_answer.votes %>
+                  Votes: <%= question.top_answer.votes.size %>
                 </p>
                 <img src="<%= question.top_answer.delta %>" alt="delta gif" />
               <% else %>

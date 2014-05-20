@@ -95,3 +95,31 @@ post '/questions/:id/answers' do
   @answer = Answer.create(:user_id => @user.id, :question_id => @question.id, :original_solution => params[:original_solution], :delta => params[:delta], :final_solution => params[:final_solution])
   redirect to "/questions/#{@question.id}/answers"
 end
+
+#--------- VOTES ------------
+
+post '/add_votes' do
+  if current_user
+    @user = User.find(session[:user_id])
+    @answer = Answer.find(params[:answer])
+
+    @answer.up_vote(@user)
+
+    return {votes: (@answer.votes.size)}.to_json
+  else
+    return "Must be logged in to answer"
+  end
+end
+
+post '/down_vote' do
+  if current_user
+    @user = User.find(session[:user_id])
+    @answer = Answer.find(params[:answer])
+
+    @answer.down_vote(@user)
+
+    return {votes: (@answer.votes.size)}.to_json
+  else
+    return "Must be logged in to answer"
+  end
+end
