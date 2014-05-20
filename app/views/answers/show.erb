@@ -10,15 +10,16 @@
       <div class="answer-box">
         <div class="submission">
           <h2 style="display:inline-block;">Solution <%=index+1%></h2>
-          <span class="votes header">
-            <% if !answer.users.include?(current_user) %>
-                <img class="up" id="<%=answer.id%>up"   src="/images/up_vote.png" alt="vote up" />
-                <img class="down" id="<%=answer.id%>down" src="/images/down_vote.png" alt="vote down" style="display: none"/>
-            <% else %>
-                <img class="up" id="<%=answer.id%>up"   src="/images/up_vote.png" alt="vote up" style="display: none"/>
-                <img class="down" id="<%=answer.id%>down" src="/images/down_vote.png" alt="vote down"/>
-            <% end %>
-          </span><br>
+            <span class="votes header">
+              <% if !answer.users.include?(current_user) %>
+                  <img class="up vote" id="<%=answer.id%>up"   src="/images/up_vote.png" alt="vote up" />
+                  <img class="down" id="<%=answer.id%>down" src="/images/down_vote.png" alt="vote down" style="display: none"/>
+              <% else %>
+                  <img class="up vote" id="<%=answer.id%>up"   src="/images/up_vote.png" alt="vote up" style="display: none"/>
+                  <img class="down" id="<%=answer.id%>down" src="/images/down_vote.png" alt="vote down"/>
+              <% end %>
+            </span>
+            <br>
           Submitted by <%= answer.user.name %> (<%= answer.user.email %>)<br>
           on <%= answer.created_at %><br>
           <span class="vote-amount" id="answer<%=answer.id%>"><%= answer.votes.size %></span> votes
@@ -51,6 +52,13 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
+  $('.vote').on('click', function(e) {
+    e.preventDefault();
+    $.post('/vote', function(data) {
+      console.log(data);
+    })
+  });
+
   $('.up').on('click', function(e) {
     e.preventDefault();
     var answer_id = parseInt($(this)[0].id)
