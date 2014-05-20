@@ -98,6 +98,12 @@ end
 
 #--------- VOTES ------------
 
+post '/vote' do
+  if !current_user
+    return "Must be logged in to vote!"
+  end
+end
+
 post '/add_votes' do
   if current_user
     @user = User.find(session[:user_id])
@@ -107,7 +113,7 @@ post '/add_votes' do
 
     return {votes: (@answer.votes.size)}.to_json
   else
-    return "Must be logged in to answer"
+    return {error: "Must be logged in to vote"}.to_json
   end
 end
 
@@ -120,6 +126,6 @@ post '/down_vote' do
 
     return {votes: (@answer.votes.size)}.to_json
   else
-    return "Must be logged in to answer"
+    return "Must be logged in to vote"
   end
 end

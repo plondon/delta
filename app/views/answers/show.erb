@@ -10,15 +10,17 @@
       <div class="answer-box">
         <div class="submission">
           <h2 style="display:inline-block;">Solution <%=index+1%></h2>
-          <span class="votes header">
-            <% if !answer.users.include?(current_user) %>
-                <img class="up" id="<%=answer.id%>up"   src="/images/up_vote.png" alt="vote up" />
-                <img class="down" id="<%=answer.id%>down" src="/images/down_vote.png" alt="vote down" style="display: none"/>
-            <% else %>
-                <img class="up" id="<%=answer.id%>up"   src="/images/up_vote.png" alt="vote up" style="display: none"/>
-                <img class="down" id="<%=answer.id%>down" src="/images/down_vote.png" alt="vote down"/>
-            <% end %>
-          </span><br>
+            <span class="votes header">
+              <% if !answer.users.include?(current_user) %>
+                  <img class="up vote" id="<%=answer.id%>up"   src="/images/up_vote.png" alt="vote up" />
+                  <img class="down" id="<%=answer.id%>down" src="/images/down_vote.png" alt="vote down" style="display: none"/>
+              <% else %>
+                  <img class="up vote" id="<%=answer.id%>up"   src="/images/up_vote.png" alt="vote up" style="display: none"/>
+                  <img class="down vote" id="<%=answer.id%>down" src="/images/down_vote.png" alt="vote down"/>
+              <% end %>
+            </span>
+            <span id="voting-error"></span>
+            <br>
           Submitted by <%= answer.user.name %> (<%= answer.user.email %>)<br>
           on <%= answer.created_at %><br>
           <span class="vote-amount" id="answer<%=answer.id%>"><%= answer.votes.size %></span> votes
@@ -51,37 +53,53 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  $('.up').on('click', function(e) {
+  var Vote = function(answer_id, votes, vote_amount, up_or_down) {
+    this.answer_id = answer_id;
+    this.votes = votes;
+    this.vote_amount = vote_amount;
+    this.up_or_down = up_or_down
+  }
+
+  $('.vote').on('click', function(e) {
     e.preventDefault();
-    var answer_id = parseInt($(this)[0].id)
-    var votes = parseInt($('#answer' + answer_id).text())
-    var vote_amount = $('#answer' + answer_id)
 
-    var posting = $.post('/add_votes', { vote_num: votes, answer: answer_id })
+    votes_object = new Vote(parseInt($(this)[0].id),
+                            parseInt($('#answer' + parseInt($(this)[0].id)).text()),
+                            $('#answer' + parseInt($(this)[0].id)),
+                            $(this).attr('class').split(" ")[0]
+                            )
 
-    posting.done(function(data) {
-      data = JSON.parse(data)
-      vote_amount.empty().append(data["votes"])
-    });
+    if (votes_object.up_or_down === "up") {
+      var posting = $.post('/add_votes',
+        { vote_num: votes_object.votes, answer: votes_object.answer_id })
 
-    $(this).hide();
-    $('.down').show();
-  });
+      posting.done(function(data) {
+        data = JSON.parse(data)
+        if (data["error"]) {
+          alert("Must be logged in to vote")
+        }
+        else {
+          votes_object.vote_amount.empty().append(data["votes"])
+          $('.up').hide();
+          $('.down').show();
+        }
+      });
+    }
+    else {
+      var posting = $.post('/down_vote',
+        { vote_num: votes_object.votes, answer: votes_object.answer_id })
 
-  $('.down').on('click', function(e) {
-    e.preventDefault();
-    var answer_id = parseInt($(this)[0].id)
-    var votes = parseInt($('#answer' + answer_id).text())
-    var vote_amount = $('#answer' + answer_id)
-
-    var posting = $.post('/down_vote', { vote_num: votes, answer: answer_id })
-
-    posting.done(function(data) {
-      data = JSON.parse(data)
-      vote_amount.empty().append(data["votes"])
-    });
-
-    $(this).hide();
-    $('.up').show();
+      posting.done(function(data) {
+        data = JSON.parse(data)
+        if (data["error"]) {
+          alert("Must be logged in to vote")
+        }
+        else {
+          votes_object.vote_amount.empty().append(data["votes"])
+          $('.down').hide();
+          $('.up').show();
+        }
+      });
+    }
   });
 </script>
