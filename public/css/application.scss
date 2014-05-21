@@ -28,7 +28,6 @@ body {
   background-position: bottom;
   background-color: #F8F8F8;
   background-size: cover;
-  cursor: pointer;
   border: 1px solid $base-border-color;
   margin-bottom: $base-line-height;
 
@@ -54,7 +53,9 @@ body {
     padding: 2.4em 1.5em;
   }
   a {
-    font-size: 2em;
+    font-size: 4em;
+    position: relative;
+    top: 15px;
   }
 }
 
